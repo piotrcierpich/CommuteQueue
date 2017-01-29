@@ -9,10 +9,8 @@ import java.util.*;
  * Created by Piotrek on 2016-10-24.
  */
 class Holidays {
-    // HashMap
     private final HashMap<LocalDate, HolidayCollection> daysOff = new HashMap<>();
     private final HashSet<DriveDay> outOfQueue = new HashSet<>();
-//    private final HashMap<>
 
 
     void add(Holiday holiday) {
