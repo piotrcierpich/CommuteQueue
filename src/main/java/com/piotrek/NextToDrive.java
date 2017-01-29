@@ -8,15 +8,15 @@ import java.util.stream.StreamSupport;
 /**
  * Created by Piotrek on 2016-10-08.
  */
-class DriverQueue {
+class NextToDrive {
     private final DriversOrdered driversOrdered;
 
-    DriverQueue(DriversOrdered driversOrdered) {
+    NextToDrive(DriversOrdered driversOrdered) {
 
         this.driversOrdered = driversOrdered;
     }
 
-    DriversByRegistry next(DrivingRegistry drivingRegistry) {
+    DrivingQueue find(DrivingRegistry drivingRegistry) {
         List<CommutePrioritized> commutePrioritizedList = StreamSupport.stream(driversOrdered.spliterator(), false)
                                                                         .map(driver -> drivingRegistry.getDriverCounts(driver))
                                                                         .map(driverCount -> new CommutePrioritized(driverCount))
@@ -25,7 +25,7 @@ class DriverQueue {
         Driver[] drivers = commutePrioritizedList.stream()
                 .map(prioritized -> prioritized.driverCount.getDriver())
                 .toArray(Driver[]::new);
-        return new DriversByRegistry(drivers);
+        return new DrivingQueue(drivers);
     }
 
     private class CommutePrioritized implements Comparable<CommutePrioritized> {

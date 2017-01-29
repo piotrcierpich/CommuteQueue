@@ -5,41 +5,40 @@ import java.util.Arrays;
 
 class DatePlanner {
 
-    private final DriverQueue driverQueue;
+    private final NextToDrive nextToDrive;
     private final DrivingRegistry drivingRegistry;
     private final Holidays holidays;
 
-    DatePlanner(DriverQueue driverQueue, DrivingRegistry drivingRegistry, Holidays holidays) {
-        this.driverQueue = driverQueue;
+    DatePlanner(NextToDrive nextToDrive, DrivingRegistry drivingRegistry, Holidays holidays) {
+        this.nextToDrive = nextToDrive;
         this.drivingRegistry = drivingRegistry;
         this.holidays = holidays;
     }
 
     void PlanTheDay(DrivePlan drivePlan, LocalDate date) {
-        DriversByRegistry nextToDrive1 = driverQueue.next(drivingRegistry);
-        Driver driver = nextToDrive1.selectAvailable(holidays, date);
-        if (driver == null)
-            return;
-
-        drivePlan.addDriveDay(new DriveDay(date, driver));
-        drivingRegistry.addDrive(driver);
+        DrivingQueue drivingQueue = nextToDrive.find(drivingRegistry);
+//        Driver driver = drivingQueue.selectAvailable(holidays, date);
+//        if (driver == null)
+//            return;
+//        drivePlan.addDriveDay(new DriveDay(date, driver));
+//        drivingRegistry.addDrive(driver);
+        drivingQueue.commit(holidays, date, drivePlan, drivingRegistry);
     }
 }
 
-class DriversByRegistry {
+class DrivingQueue {
     private final Driver[] nextToDrive;
 
-    DriversByRegistry(Driver[] nextToDrive) {
+    DrivingQueue(Driver[] nextToDrive) {
         this.nextToDrive = nextToDrive;
     }
 
-    Driver selectAvailable(Holidays holidays, LocalDate date) {
+    void commit(Holidays holidays, LocalDate date, DrivePlan drivePlan, DrivingRegistry drivingRegistry) {
         for (Driver driver : nextToDrive) {
-            if (holidays.has(new DayOff(date, driver)))
-                continue;
-            return driver;
+            Commitment commitment = holidays.getCommitment(date, driver);
+            if(commitment.TryApply(drivePlan, drivingRegistry))
+                break;
         }
-        return null;
     }
 
     @Override
@@ -47,7 +46,7 @@ class DriversByRegistry {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        DriversByRegistry that = (DriversByRegistry) o;
+        DrivingQueue that = (DrivingQueue) o;
 
         // Probably incorrect - comparing Object[] arrays with Arrays.equals
         return Arrays.equals(nextToDrive, that.nextToDrive);

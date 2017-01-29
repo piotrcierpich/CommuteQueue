@@ -18,7 +18,11 @@ class OutOfQueue implements Holiday {
 
     @Override
     public LocalDate getDate() {
-        return null;
+        return date;
+    }
+
+    public Driver getDriver(){
+        return driver;
     }
 
     @Override

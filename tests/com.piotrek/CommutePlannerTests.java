@@ -23,9 +23,9 @@ public class CommutePlannerTests {
         this.sut = new CommutePlanner(daysOfWeek, datePlanner);
     }
 
-    private DriverQueue CreateDriverQueue() {
+    private NextToDrive CreateDriverQueue() {
         DriversOrdered driversOrdered = new DriversOrdered("PH", "PA", "PC");
-        return new DriverQueue(driversOrdered);
+        return new NextToDrive(driversOrdered);
     }
 
     private DrivingRegistry CreateDrivingRegistry() {
@@ -137,7 +137,7 @@ public class CommutePlannerTests {
         LocalDate saturdayIn2weeks = saturday.plusWeeks(2);
         DateSpan dateSpan = DateSpan.between(saturday, saturdayIn2weeks);
         CommuteCalendar commuteCalendar = new CommuteCalendar(dateSpan);
-        Holiday outOfQueue = new OutOfQueue(LocalDate.of(2016, 11, 1), new Driver("PC"));
+        Holiday outOfQueue = new OutOfQueue(LocalDate.of(2016, 10, 19), new Driver("PC"));
         holidays.add(outOfQueue);
         //when
         DrivePlan drivePlan = sut.plan(commuteCalendar);
