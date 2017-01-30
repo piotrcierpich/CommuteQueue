@@ -5,7 +5,7 @@ import java.time.LocalDate;
 /**
  * Created by Piotrek on 2016-11-10.
  */
-class PublicHoliday implements Holiday {
+class PublicHoliday implements Excuse {
     private final LocalDate date;
 
     PublicHoliday(LocalDate date) {
@@ -37,7 +37,7 @@ class PublicHoliday implements Holiday {
     }
 
     @Override
-    public boolean matches(Holiday other) {
+    public boolean matches(Excuse other) {
         return date.isEqual(other.getDate());
     }
 }

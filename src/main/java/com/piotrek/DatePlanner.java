@@ -7,22 +7,17 @@ class DatePlanner {
 
     private final NextToDrive nextToDrive;
     private final DrivingRegistry drivingRegistry;
-    private final Holidays holidays;
+    private final Readiness readiness;
 
-    DatePlanner(NextToDrive nextToDrive, DrivingRegistry drivingRegistry, Holidays holidays) {
+    DatePlanner(NextToDrive nextToDrive, DrivingRegistry drivingRegistry, Readiness readiness) {
         this.nextToDrive = nextToDrive;
         this.drivingRegistry = drivingRegistry;
-        this.holidays = holidays;
+        this.readiness = readiness;
     }
 
     void PlanTheDay(DrivePlan drivePlan, LocalDate date) {
         DrivingQueue drivingQueue = nextToDrive.find(drivingRegistry);
-//        Driver driver = drivingQueue.selectAvailable(holidays, date);
-//        if (driver == null)
-//            return;
-//        drivePlan.addDriveDay(new DriveDay(date, driver));
-//        drivingRegistry.addDrive(driver);
-        drivingQueue.commit(holidays, date, drivePlan, drivingRegistry);
+        drivingQueue.commit(readiness, date, drivePlan, drivingRegistry);
     }
 }
 
@@ -33,9 +28,9 @@ class DrivingQueue {
         this.nextToDrive = nextToDrive;
     }
 
-    void commit(Holidays holidays, LocalDate date, DrivePlan drivePlan, DrivingRegistry drivingRegistry) {
+    void commit(Readiness readiness, LocalDate date, DrivePlan drivePlan, DrivingRegistry drivingRegistry) {
         for (Driver driver : nextToDrive) {
-            Commitment commitment = holidays.getCommitment(date, driver);
+            Commitment commitment = readiness.getCommitment(date, driver);
             if(commitment.TryApply(drivePlan, drivingRegistry))
                 break;
         }

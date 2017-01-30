@@ -5,7 +5,7 @@ import java.time.LocalDate;
 /**
  * Created by Piotrek on 2016-11-10.
  */
-interface Holiday {
+interface Excuse {
     LocalDate getDate();
-    boolean matches(Holiday other);
+    boolean matches(Excuse other);
 }

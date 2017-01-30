@@ -119,7 +119,7 @@ public class CommutePlannerTests {
     public void PlanShouldSkipThoseThatPause() throws InvalidArgumentException {
         //given
         CommuteCalendar commuteCalendar = commuteCalendarTestBuilder.forDuration(Period.ofWeeks(2)).build();
-        Holiday outOfQueue = new OutOfQueue(LocalDate.of(2016, 10, 19), new Driver("PC"));
+        Excuse outOfQueue = new OutOfQueue(LocalDate.of(2016, 10, 19), new Driver("PC"));
         fixture.addHoliday(outOfQueue);
         //when
         DrivePlan drivePlan = sut.plan(commuteCalendar);
@@ -159,7 +159,7 @@ class CommuteCalendarTestBuilder {
 
 class CommutePlannerFixture {
     private final DaysOfWeek daysOfWeek;
-    private final Holidays holidays = new Holidays();
+    private final Readiness readiness = new Readiness();
     private final Collection<Map.Entry<String, Integer>> driverNameAndCount;
 
     CommutePlannerFixture(DaysOfWeek daysOfWeek, Collection<Map.Entry<String, Integer>> driverNameAndCount) {
@@ -168,7 +168,7 @@ class CommutePlannerFixture {
     }
 
     CommutePlanner createSut() {
-        DatePlanner datePlanner = new DatePlanner(createDriverQueue(), createDrivingRegistry(), holidays);
+        DatePlanner datePlanner = new DatePlanner(createDriverQueue(), createDrivingRegistry(), readiness);
         return new CommutePlanner(daysOfWeek, datePlanner);
     }
 
@@ -184,7 +184,7 @@ class CommutePlannerFixture {
         return drivingRegistry;
     }
 
-    void addHoliday(Holiday holiday) {
-        holidays.add(holiday);
+    void addHoliday(Excuse excuse) {
+        readiness.add(excuse);
     }
 }

@@ -18,7 +18,7 @@ public class HolidaysTests {
     @Test
     public void hasIsTrueWhenDriverHasHoliday() {
         //given
-        Holidays sut = new Holidays();
+        Readiness sut = new Readiness();
         sut.add(new DayOff(date, driver));
         //when
         boolean result = sut.has(new DayOff(date, driver));
@@ -29,7 +29,7 @@ public class HolidaysTests {
     @Test
     public void hasIsTrueWhenPublicHoliday() {
         //given
-        Holidays sut = new Holidays();
+        Readiness sut = new Readiness();
         sut.add(new PublicHoliday(date));
         //when
         assertEquals(new PublicHoliday(date).hashCode(), new DayOff(date, driver).hashCode());
@@ -42,7 +42,7 @@ public class HolidaysTests {
     @Test
     public void hasIsTrueWhenPublicHolidayIsNotOverridenByDayOff() {
         //given
-        Holidays sut = new Holidays();
+        Readiness sut = new Readiness();
         Driver otherDriver = new Driver("PA");
         sut.add(new PublicHoliday(date));
         sut.add(new DayOff(date, otherDriver));
@@ -55,7 +55,7 @@ public class HolidaysTests {
     @Test
     public void hasIsTrueWhenPublicHolidayOthersHaveHolidaysToo() {
         //given
-        Holidays sut = new Holidays();
+        Readiness sut = new Readiness();
         Driver otherDriver = new Driver("PA");
         sut.add(new PublicHoliday(date));
         sut.add(new DayOff(date, otherDriver));

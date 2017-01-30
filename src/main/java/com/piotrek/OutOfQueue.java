@@ -7,7 +7,7 @@ import java.time.LocalDate;
 /**
  * Created by Piotrek on 2016-12-08.
  */
-class OutOfQueue implements Holiday {
+class OutOfQueue implements Excuse {
     private final LocalDate date;
     private final Driver driver;
 
@@ -26,7 +26,7 @@ class OutOfQueue implements Holiday {
     }
 
     @Override
-    public boolean matches(Holiday other) {
+    public boolean matches(Excuse other) {
         return false;
     }
 }

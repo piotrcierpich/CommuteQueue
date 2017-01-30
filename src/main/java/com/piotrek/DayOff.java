@@ -7,7 +7,7 @@ import java.time.LocalDate;
 /**
  * Created by Piotrek on 2016-10-24.
  */
-class DayOff implements Holiday {
+class DayOff implements Excuse {
     private final LocalDate date;
     private final Driver driver;
 
@@ -44,7 +44,7 @@ class DayOff implements Holiday {
     }
 
     @Override
-    public boolean matches(Holiday other) {
+    public boolean matches(Excuse other) {
         return equals(other);
     }
 }
