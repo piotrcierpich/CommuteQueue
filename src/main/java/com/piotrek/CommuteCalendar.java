@@ -1,5 +1,7 @@
 package com.piotrek;
 
+import com.piotrek.calendar.DateSpan;
+
 import java.time.LocalDate;
 import java.util.Arrays;
 

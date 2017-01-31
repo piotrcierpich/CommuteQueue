@@ -1,12 +1,11 @@
 package com.piotrek;
 
+import com.piotrek.calendar.DateSpan;
 import com.sun.javaws.exceptions.InvalidArgumentException;
 import org.junit.Test;
 
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.piotrek;
+package com.piotrek.calendar;
 
 import java.time.DayOfWeek;
 import java.util.HashSet;
@@ -13,16 +13,16 @@ public final class DaysOfWeek {
         daysOfWeek.add(dayOfWeek);
     }
 
-    static DaysOfWeek Is(DayOfWeek dayOfWeek) {
+    public static DaysOfWeek Is(DayOfWeek dayOfWeek) {
         return new DaysOfWeek(dayOfWeek);
     }
 
-    DaysOfWeek And(DayOfWeek dayOfWeek) {
+    public DaysOfWeek And(DayOfWeek dayOfWeek) {
         daysOfWeek.add(dayOfWeek);
         return this;
     }
 
-    boolean notContains(DayOfWeek dayOfWeek) {
+    public boolean notContains(DayOfWeek dayOfWeek) {
         return !daysOfWeek.contains(dayOfWeek);
     }
 }

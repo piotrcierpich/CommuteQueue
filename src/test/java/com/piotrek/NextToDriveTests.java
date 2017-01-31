@@ -1,5 +1,8 @@
 package com.piotrek;
 
+import com.piotrek.planning.DriversOrdered;
+import com.piotrek.planning.DrivingQueue;
+import com.piotrek.planning.NextToDrive;
 import com.piotrek.statistics.DrivingRegistry;
 import org.junit.Test;
 

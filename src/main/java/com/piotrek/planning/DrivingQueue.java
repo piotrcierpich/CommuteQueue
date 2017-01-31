@@ -1,34 +1,18 @@
-package com.piotrek;
+package com.piotrek.planning;
 
 import com.piotrek.Commitments.Commitment;
 import com.piotrek.Commitments.Readiness;
+import com.piotrek.DrivePlan;
+import com.piotrek.Driver;
 import com.piotrek.statistics.DrivingRegistry;
 
 import java.time.LocalDate;
 import java.util.Arrays;
 
-class DatePlanner {
-
-    private final NextToDrive nextToDrive;
-    private final DrivingRegistry drivingRegistry;
-    private final Readiness readiness;
-
-    DatePlanner(NextToDrive nextToDrive, DrivingRegistry drivingRegistry, Readiness readiness) {
-        this.nextToDrive = nextToDrive;
-        this.drivingRegistry = drivingRegistry;
-        this.readiness = readiness;
-    }
-
-    void PlanTheDay(DrivePlan drivePlan, LocalDate date) {
-        DrivingQueue drivingQueue = nextToDrive.find(drivingRegistry);
-        drivingQueue.commit(readiness, date, drivePlan, drivingRegistry);
-    }
-}
-
-class DrivingQueue {
+public class DrivingQueue {
     private final Driver[] nextToDrive;
 
-    DrivingQueue(Driver[] nextToDrive) {
+    public DrivingQueue(Driver[] nextToDrive) {
         this.nextToDrive = nextToDrive;
     }
 

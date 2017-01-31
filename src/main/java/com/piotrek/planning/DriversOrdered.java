@@ -1,4 +1,6 @@
-package com.piotrek;
+package com.piotrek.planning;
+
+import com.piotrek.Driver;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -7,7 +9,7 @@ import java.util.stream.Collectors;
 /**
  * Created by Piotrek on 2016-10-08.
  */
-class DriversOrdered implements Iterable<Driver> {
+public class DriversOrdered implements Iterable<Driver> {
     private final Iterable<Driver> drivers;
 
     public DriversOrdered(Iterable<Driver> drivers) {

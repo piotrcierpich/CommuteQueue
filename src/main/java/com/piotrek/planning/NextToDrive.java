@@ -1,5 +1,6 @@
-package com.piotrek;
+package com.piotrek.planning;
 
+import com.piotrek.Driver;
 import com.piotrek.statistics.DriverCount;
 import com.piotrek.statistics.DrivingRegistry;
 
@@ -11,15 +12,15 @@ import java.util.stream.StreamSupport;
 /**
  * Created by Piotrek on 2016-10-08.
  */
-class NextToDrive {
+public class NextToDrive {
     private final DriversOrdered driversOrdered;
 
-    NextToDrive(DriversOrdered driversOrdered) {
+    public NextToDrive(DriversOrdered driversOrdered) {
 
         this.driversOrdered = driversOrdered;
     }
 
-    DrivingQueue find(DrivingRegistry drivingRegistry) {
+    public DrivingQueue find(DrivingRegistry drivingRegistry) {
         List<CommutePrioritized> commutePrioritizedList = StreamSupport.stream(driversOrdered.spliterator(), false)
                                                                         .map(drivingRegistry::getDriverCounts)
                                                                         .map(driverCount -> new CommutePrioritized(driverCount))

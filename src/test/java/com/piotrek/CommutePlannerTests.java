@@ -1,6 +1,11 @@
 package com.piotrek;
 
 import com.piotrek.Commitments.*;
+import com.piotrek.calendar.DateSpan;
+import com.piotrek.calendar.DaysOfWeek;
+import com.piotrek.planning.DatePlanner;
+import com.piotrek.planning.DriversOrdered;
+import com.piotrek.planning.NextToDrive;
 import com.piotrek.statistics.DrivingRegistry;
 import com.sun.javaws.exceptions.InvalidArgumentException;
 import org.junit.Test;

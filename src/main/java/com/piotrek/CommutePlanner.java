@@ -1,5 +1,8 @@
 package com.piotrek;
 
+import com.piotrek.calendar.DaysOfWeek;
+import com.piotrek.planning.DatePlanner;
+
 import java.time.LocalDate;
 
 /**
@@ -21,7 +24,7 @@ class CommutePlanner {
         for (LocalDate date : dates){
             if(daysOfWeek.notContains(date.getDayOfWeek()))
                 continue;
-            datePlanner.PlanTheDay(drivePlan, date);
+            datePlanner.planTheDay(drivePlan, date);
         }
         return drivePlan;
     }
