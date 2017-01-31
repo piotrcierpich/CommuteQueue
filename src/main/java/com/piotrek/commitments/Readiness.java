@@ -1,4 +1,4 @@
-package com.piotrek.Commitments;
+package com.piotrek.commitments;
 
 import com.piotrek.Driver;
 

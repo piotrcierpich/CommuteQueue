@@ -1,25 +1,20 @@
-package com.piotrek.Commitments;
+package com.piotrek.commitments;
 
-import com.piotrek.DriveDay;
 import com.piotrek.DrivePlan;
 import com.piotrek.Driver;
 import com.piotrek.statistics.DrivingRegistry;
 
-import java.time.LocalDate;
-
-class ReadyToDrive implements Commitment{
-    private final LocalDate date;
+class CommitNoCommute implements Commitment
+{
     private final Driver driver;
 
-    ReadyToDrive(LocalDate date, Driver driver) {
-        this.date = date;
+    CommitNoCommute(Driver driver) {
         this.driver = driver;
     }
 
     @Override
     public boolean TryFulfillPlan(DrivePlan drivePlan, DrivingRegistry drivingRegistry) {
-        drivePlan.addDriveDay(new DriveDay(date, driver));
         drivingRegistry.addDrive(driver);
-        return true;
+        return false;
     }
 }

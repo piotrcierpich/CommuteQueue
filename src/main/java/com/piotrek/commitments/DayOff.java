@@ -1,20 +1,25 @@
-package com.piotrek.Commitments;
+package com.piotrek.commitments;
 
 import com.piotrek.Driver;
+import com.sun.istack.internal.NotNull;
 
 import java.time.LocalDate;
 
 /**
- * Created by Piotrek on 2016-11-10.
+ * Created by Piotrek on 2016-10-24.
  */
-public class PublicHoliday implements Excuse {
+public class DayOff implements Excuse {
     private final LocalDate date;
+    private final Driver driver;
 
-    public PublicHoliday(LocalDate date) {
+    public DayOff(@NotNull LocalDate date, @NotNull Driver driver) {
         if(date == null)
+            throw new IllegalArgumentException();
+        if(driver == null)
             throw new IllegalArgumentException();
 
         this.date = date;
+        this.driver = driver;
     }
 
     @Override
@@ -22,9 +27,10 @@ public class PublicHoliday implements Excuse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        PublicHoliday that = (PublicHoliday) o;
+        DayOff dayOff = (DayOff) o;
 
-        return date.equals(that.date);
+        if (!date.equals(dayOff.date)) return false;
+        return driver != null ? driver.equals(dayOff.driver) : dayOff.driver == null;
 
     }
 
@@ -40,7 +46,7 @@ public class PublicHoliday implements Excuse {
 
     @Override
     public boolean matches(LocalDate date, Driver driver) {
-        return this.date.isEqual(date);
+        return this.date.isEqual(date) && this.driver.equals(driver);
     }
 
     @Override

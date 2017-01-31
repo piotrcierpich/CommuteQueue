@@ -1,7 +1,7 @@
 package com.piotrek.planning;
 
-import com.piotrek.Commitments.Commitment;
-import com.piotrek.Commitments.Readiness;
+import com.piotrek.commitments.Commitment;
+import com.piotrek.commitments.Readiness;
 import com.piotrek.DrivePlan;
 import com.piotrek.Driver;
 import com.piotrek.statistics.DrivingRegistry;
