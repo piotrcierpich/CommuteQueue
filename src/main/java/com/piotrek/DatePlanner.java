@@ -1,5 +1,8 @@
 package com.piotrek;
 
+import com.piotrek.Commitments.Commitment;
+import com.piotrek.Commitments.Readiness;
+
 import java.time.LocalDate;
 import java.util.Arrays;
 
@@ -31,7 +34,7 @@ class DrivingQueue {
     void commit(Readiness readiness, LocalDate date, DrivePlan drivePlan, DrivingRegistry drivingRegistry) {
         for (Driver driver : nextToDrive) {
             Commitment commitment = readiness.getCommitment(date, driver);
-            if(commitment.TryApply(drivePlan, drivingRegistry))
+            if(commitment.TryFulfillPlan(drivePlan, drivingRegistry))
                 break;
         }
     }

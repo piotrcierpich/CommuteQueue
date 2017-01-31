@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 /**
  * Created by Piotrek on 2016-10-09.
  */
-class DrivingRegistry {
+public class DrivingRegistry {
     private final Map<Driver, Integer> countMap = new HashMap<>();
     private final Map<Driver, Integer> outOfQueueMap = new HashMap<>();
 
@@ -22,7 +22,7 @@ class DrivingRegistry {
         return new DriverCount(driver, driverCountWhenExist + outOfQueueCountWhenExist);
     }
 
-    void addDrive(Driver driver) {
+    public void addDrive(Driver driver) {
         Integer driveCountsIncreasedByOne = countMap.getOrDefault(driver, 0) + 1;
         countMap.put(driver, driveCountsIncreasedByOne);
     }

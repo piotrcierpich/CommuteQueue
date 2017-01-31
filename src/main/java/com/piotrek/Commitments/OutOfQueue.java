@@ -1,5 +1,6 @@
-package com.piotrek;
+package com.piotrek.Commitments;
 
+import com.piotrek.Driver;
 import com.sun.istack.internal.NotNull;
 
 import java.time.LocalDate;
@@ -7,11 +8,11 @@ import java.time.LocalDate;
 /**
  * Created by Piotrek on 2016-12-08.
  */
-class OutOfQueue implements Excuse {
+public class OutOfQueue implements Excuse {
     private final LocalDate date;
     private final Driver driver;
 
-    OutOfQueue(@NotNull LocalDate date, @NotNull Driver driver)  {
+    public OutOfQueue(@NotNull LocalDate date, @NotNull Driver driver)  {
         this.date = date;
         this.driver = driver;
     }

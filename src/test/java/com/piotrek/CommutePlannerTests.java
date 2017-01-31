@@ -1,5 +1,6 @@
 package com.piotrek;
 
+import com.piotrek.Commitments.*;
 import com.sun.javaws.exceptions.InvalidArgumentException;
 import org.junit.Test;
 
@@ -15,7 +16,6 @@ import static org.junit.Assert.*;
 
 public class CommutePlannerTests {
 
-    // TODO refactor towards CommutePlannerIntegrationFixture
     private static final DaysOfWeek tuesdayAndWednesday = DaysOfWeek.Is(DayOfWeek.TUESDAY).And(DayOfWeek.WEDNESDAY);
     private static final LocalDate calendarStart = LocalDate.of(2016, 10, 14);
     private final CommuteCalendarTestBuilder commuteCalendarTestBuilder;
@@ -55,7 +55,7 @@ public class CommutePlannerTests {
     public void PlanShouldDequeueNextDriversConsideringHolidays() throws InvalidArgumentException {
         //given
         CommuteCalendar commuteCalendar = commuteCalendarTestBuilder.forDuration(Period.ofMonths(1)).build();
-        fixture.addHoliday(new PublicHoliday(LocalDate.of(2016, 11, 1)));
+        fixture.addExcuse(new PublicHoliday(LocalDate.of(2016, 11, 1)));
         //when
         DrivePlan drivePlan = sut.plan(commuteCalendar);
         //expected
@@ -78,7 +78,7 @@ public class CommutePlannerTests {
         //given
         CommuteCalendar commuteCalendar = commuteCalendarTestBuilder.forDuration(Period.ofWeeks(2)).build();
         DayOff dayOff = new DayOff(LocalDate.of(2016, 10, 19), new Driver("PC"));
-        fixture.addHoliday(dayOff);
+        fixture.addExcuse(dayOff);
         //when
         DrivePlan drivePlan = sut.plan(commuteCalendar);
         //expected
@@ -97,7 +97,7 @@ public class CommutePlannerTests {
         //given
         CommuteCalendar commuteCalendar = commuteCalendarTestBuilder.forDuration(Period.ofMonths(1)).build();
         PublicHoliday publicHoliday = new PublicHoliday(LocalDate.of(2016, 11, 1));
-        fixture.addHoliday(publicHoliday);
+        fixture.addExcuse(publicHoliday);
         //when
         DrivePlan drivePlan = sut.plan(commuteCalendar);
         //expected
@@ -120,7 +120,7 @@ public class CommutePlannerTests {
         //given
         CommuteCalendar commuteCalendar = commuteCalendarTestBuilder.forDuration(Period.ofWeeks(2)).build();
         Excuse outOfQueue = new OutOfQueue(LocalDate.of(2016, 10, 19), new Driver("PC"));
-        fixture.addHoliday(outOfQueue);
+        fixture.addExcuse(outOfQueue);
         //when
         DrivePlan drivePlan = sut.plan(commuteCalendar);
         //expected
@@ -184,7 +184,7 @@ class CommutePlannerFixture {
         return drivingRegistry;
     }
 
-    void addHoliday(Excuse excuse) {
+    void addExcuse(Excuse excuse) {
         readiness.add(excuse);
     }
 }
