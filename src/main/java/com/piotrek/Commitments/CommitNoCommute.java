@@ -2,7 +2,7 @@ package com.piotrek.Commitments;
 
 import com.piotrek.DrivePlan;
 import com.piotrek.Driver;
-import com.piotrek.DrivingRegistry;
+import com.piotrek.statistics.DrivingRegistry;
 
 class CommitNoCommute implements Commitment
 {

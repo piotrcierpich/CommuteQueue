@@ -3,7 +3,7 @@ package com.piotrek.Commitments;
 import com.piotrek.DriveDay;
 import com.piotrek.DrivePlan;
 import com.piotrek.Driver;
-import com.piotrek.DrivingRegistry;
+import com.piotrek.statistics.DrivingRegistry;
 
 import java.time.LocalDate;
 

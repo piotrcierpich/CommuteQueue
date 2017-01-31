@@ -1,5 +1,6 @@
 package com.piotrek;
 
+import com.piotrek.statistics.DrivingRegistry;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

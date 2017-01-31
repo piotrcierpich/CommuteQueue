@@ -13,16 +13,16 @@ public final class DaysOfWeek {
         daysOfWeek.add(dayOfWeek);
     }
 
-    public static DaysOfWeek Is(DayOfWeek dayOfWeek) {
+    static DaysOfWeek Is(DayOfWeek dayOfWeek) {
         return new DaysOfWeek(dayOfWeek);
     }
 
-    public DaysOfWeek And(DayOfWeek dayOfWeek) {
+    DaysOfWeek And(DayOfWeek dayOfWeek) {
         daysOfWeek.add(dayOfWeek);
         return this;
     }
 
-    public boolean notContains(DayOfWeek dayOfWeek) {
-        return daysOfWeek.contains(dayOfWeek) == false;
+    boolean notContains(DayOfWeek dayOfWeek) {
+        return !daysOfWeek.contains(dayOfWeek);
     }
 }

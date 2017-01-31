@@ -1,6 +1,7 @@
 package com.piotrek;
 
-import org.junit.Assert;
+import com.piotrek.statistics.DriverCount;
+import com.piotrek.statistics.DrivingRegistry;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

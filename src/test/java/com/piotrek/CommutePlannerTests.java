@@ -1,6 +1,7 @@
 package com.piotrek;
 
 import com.piotrek.Commitments.*;
+import com.piotrek.statistics.DrivingRegistry;
 import com.sun.javaws.exceptions.InvalidArgumentException;
 import org.junit.Test;
 

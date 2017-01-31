@@ -1,7 +1,7 @@
 package com.piotrek.Commitments;
 
 import com.piotrek.DrivePlan;
-import com.piotrek.DrivingRegistry;
+import com.piotrek.statistics.DrivingRegistry;
 
 /**
  * Created by Piotrek on 2017-01-29.

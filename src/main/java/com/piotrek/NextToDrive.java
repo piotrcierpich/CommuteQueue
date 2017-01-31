@@ -1,5 +1,8 @@
 package com.piotrek;
 
+import com.piotrek.statistics.DriverCount;
+import com.piotrek.statistics.DrivingRegistry;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,7 +21,7 @@ class NextToDrive {
 
     DrivingQueue find(DrivingRegistry drivingRegistry) {
         List<CommutePrioritized> commutePrioritizedList = StreamSupport.stream(driversOrdered.spliterator(), false)
-                                                                        .map(driver -> drivingRegistry.getDriverCounts(driver))
+                                                                        .map(drivingRegistry::getDriverCounts)
                                                                         .map(driverCount -> new CommutePrioritized(driverCount))
                                                                         .collect(Collectors.toList());
         Collections.sort(commutePrioritizedList);

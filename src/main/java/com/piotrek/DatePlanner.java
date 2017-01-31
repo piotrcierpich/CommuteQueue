@@ -2,6 +2,7 @@ package com.piotrek;
 
 import com.piotrek.Commitments.Commitment;
 import com.piotrek.Commitments.Readiness;
+import com.piotrek.statistics.DrivingRegistry;
 
 import java.time.LocalDate;
 import java.util.Arrays;

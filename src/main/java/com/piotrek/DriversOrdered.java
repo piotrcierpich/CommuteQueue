@@ -2,14 +2,12 @@ package com.piotrek;
 
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 /**
  * Created by Piotrek on 2016-10-08.
  */
-public class DriversOrdered implements Iterable<Driver> {
+class DriversOrdered implements Iterable<Driver> {
     private final Iterable<Driver> drivers;
 
     public DriversOrdered(Iterable<Driver> drivers) {
