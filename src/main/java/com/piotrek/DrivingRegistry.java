@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
  */
 class DrivingRegistry {
     private final Map<Driver, Integer> countMap = new HashMap<>();
+    private final Map<Driver, Integer> outOfQueueMap = new HashMap<>();
 
     void set(Driver driver, int count) {
         countMap.put(driver, count);
@@ -17,12 +18,18 @@ class DrivingRegistry {
 
     DriverCount getDriverCounts(Driver driver) {
         Integer driverCountWhenExist = countMap.getOrDefault(driver, 0);
-        return new DriverCount(driver, driverCountWhenExist);
+        Integer outOfQueueCountWhenExist = outOfQueueMap.getOrDefault(driver, 0);
+        return new DriverCount(driver, driverCountWhenExist + outOfQueueCountWhenExist);
     }
 
     void addDrive(Driver driver) {
-        Integer driveCountsIncreasedByOne = countMap.get(driver) + 1;
+        Integer driveCountsIncreasedByOne = countMap.getOrDefault(driver, 0) + 1;
         countMap.put(driver, driveCountsIncreasedByOne);
+    }
+
+    void addOutOfQueue(Driver driver) {
+        Integer outOfQueuePlusOne = outOfQueueMap.getOrDefault(driver, 0) + 1;
+        outOfQueueMap.put(driver, outOfQueuePlusOne);
     }
 }
 
