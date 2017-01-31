@@ -21,12 +21,17 @@ class OutOfQueue implements Excuse {
         return date;
     }
 
-    public Driver getDriver(){
-        return driver;
+    @Override
+    public boolean matches(LocalDate date, Driver driver) {
+        return this.date.isEqual(date) && this.driver.equals(driver);
     }
 
     @Override
-    public boolean matches(Excuse other) {
-        return false;
+    public Commitment getCommitment() {
+        return new CommitNoCommute(driver);
+    }
+
+    public Driver getDriver(){
+        return driver;
     }
 }

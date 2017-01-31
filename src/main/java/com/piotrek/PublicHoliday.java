@@ -37,7 +37,12 @@ class PublicHoliday implements Excuse {
     }
 
     @Override
-    public boolean matches(Excuse other) {
-        return date.isEqual(other.getDate());
+    public boolean matches(LocalDate date, Driver driver) {
+        return this.date.isEqual(date);
+    }
+
+    @Override
+    public Commitment getCommitment() {
+        return new NoCommitment();
     }
 }

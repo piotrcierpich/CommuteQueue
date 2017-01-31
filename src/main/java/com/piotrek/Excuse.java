@@ -7,5 +7,6 @@ import java.time.LocalDate;
  */
 interface Excuse {
     LocalDate getDate();
-    boolean matches(Excuse other);
+    boolean matches(LocalDate date, Driver driver);
+    Commitment getCommitment();
 }

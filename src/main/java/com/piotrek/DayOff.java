@@ -44,7 +44,12 @@ class DayOff implements Excuse {
     }
 
     @Override
-    public boolean matches(Excuse other) {
-        return equals(other);
+    public boolean matches(LocalDate date, Driver driver) {
+        return this.date.isEqual(date) && this.driver.equals(driver);
+    }
+
+    @Override
+    public Commitment getCommitment() {
+        return new NoCommitment();
     }
 }
